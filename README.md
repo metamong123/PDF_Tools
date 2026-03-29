@@ -7,6 +7,7 @@ You can set the page order.
 
 <img width="400" alt="Image to PDF" src="preview_imgs/img_to_pdf_preview.png" />
 
+---
 ### pdf_merge.py
 Merge multiple PDF files into one.
 
@@ -14,6 +15,7 @@ You can set the page order.
 
 <img width="400" alt="PDF Merge" src="preview_imgs/pdf_merge_preview.png" />
 
+---
 ### pdf_page_select.py
 Extract selected pages into a new PDF file.
 
