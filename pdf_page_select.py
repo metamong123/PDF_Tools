@@ -61,7 +61,7 @@ class PDFManager:
 
         # [Right] 1. Total Pages List
         tk.Label(right_main_container, text="Total Pages", bg=PDFManager.PINK).pack()
-        self.total_listbox = tk.Listbox(right_main_container, bg=PDFManager.GRAY, relief="flat", exportselection=False)
+        self.total_listbox = tk.Listbox(right_main_container, selectmode="extended", bg=PDFManager.GRAY, relief="flat", exportselection=False)
         self.total_listbox.pack(fill="both", expand=True)
         self.total_listbox.bind('<<ListboxSelect>>', lambda e: self.update_preview_from_list(self.total_listbox))
 
@@ -148,18 +148,20 @@ class PDFManager:
         selection = self.total_listbox.curselection()
         if not selection: return
         
-        index = selection[0]
-        self.selected_indices.append(index)
-        self.selected_listbox.insert(tk.END, f"{index + 1}")
+        for index in selection:
+            self.selected_indices.append(index)
+            self.selected_listbox.insert(tk.END, f"{index + 1}")
+
+        self.total_listbox.selection_clear(0, tk.END)
 
     def remove_page(self):
         # Remove the selected item from the selection list
         selection = self.selected_listbox.curselection()
         if not selection: return
         
-        idx_in_list = selection[0]
-        self.selected_listbox.delete(idx_in_list)
-        self.selected_indices.pop(idx_in_list)
+        for idx_in_list in reversed(selection):
+            self.selected_listbox.delete(idx_in_list)
+            self.selected_indices.pop(idx_in_list)
 
     def move_page(self, direction):
         # Change the order of selected pages
