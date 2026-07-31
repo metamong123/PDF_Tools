@@ -4,6 +4,16 @@
 2. [pdf_merge.py](#pdf_mergepy)
 3. [pdf_page_select.py](#pdf_page_selectpy)
 
+# Installation
+```
+conda install pillow
+```
+```
+conda install pypdf2
+```
+```
+conda install -c conda-forge pymupdf
+```
 ---
 ### img_to_pdf.py
 Convert multiple images(jpg, png) into a single PDF file.
